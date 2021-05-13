@@ -3,17 +3,27 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const app = express();
+const https = require('https');
+const fs = require('fs');
 //to define 
 //const port = process.env.PORT;
-const https = require('https');
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
 
-app.listen(process.env.PORT || 3000, function() {
-console.log("Server is up and running");
-});
+https.createServer(options, function () {
+  console.log("Server is up and running");
+}).listen(process.env.PORT );
+
+
+// app.listen(process.env.PORT || 3000, function() {
+// console.log("Server is up and running");
+// });
 
 app.get("/",function(req,res){
   res.sendFile(__dirname+"/signup.html");
