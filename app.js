@@ -11,7 +11,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-app.listen(process.env.PORT, function() {
+app.listen(process.env.PORT || 3000, function() {
 console.log("Server is up and running");
 });
 
@@ -42,7 +42,7 @@ app.post("/",function(req,res){
    
 
     // To post the data to exteral request
-    const url="https://us1.api.mailchimp.com/3.0/lists/${process.env.mailChimpUID}";
+    const url="https://us1.api.mailchimp.com/3.0/lists/"+process.env.mailChimpUID;
     const options= {
       method:"post",
       auth:process.env.mailChimpAuthKey
