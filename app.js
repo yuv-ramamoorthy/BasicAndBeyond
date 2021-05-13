@@ -2,15 +2,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const app = express();
-const port = 80;
+//to define 
+//const port = process.env.PORT;
 const https = require('https');
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-app.listen(port, function() {
-console.log("Server is up and running on port 3000");
+app.listen(process.env.PORT, function() {
+console.log("Server is up and running");
 });
 
 app.get("/",function(req,res){
