@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
@@ -42,10 +43,10 @@ app.post("/",function(req,res){
     // 57dff4548d
 
     // To post the data to exteral request
-    const url="https://us1.api.mailchimp.com/3.0/lists/57dff4548d";
+    const url="https://us1.api.mailchimp.com/3.0/lists/${process.env.mailChimpUID}";
     const options= {
       method:"post",
-      auth:"yuvaraj:8477f7fa70a72529f9f322edbb32cffd-us1"
+      auth:process.env.mailChimpAuthKey
     }
     const request=https.request(url, options, function(response){
       response.on("data", function(data){
