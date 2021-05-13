@@ -37,10 +37,9 @@ app.post("/",function(req,res){
   }
     const jsonData = JSON.stringify(data);
     // mailchimp API key
-    // 8477f7fa70a72529f9f322edbb32cffd-us1
 
     // Mail Chimp List id
-    // 57dff4548d
+   
 
     // To post the data to exteral request
     const url="https://us1.api.mailchimp.com/3.0/lists/${process.env.mailChimpUID}";
