@@ -11,19 +11,19 @@ const fs = require('fs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
-const options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
+// const options = {
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// };
 
-https.createServer(options, function () {
-  console.log("Server is up and running");
-}).listen(process.env.PORT );
+// https.createServer(options, function () {
+//   console.log("Server is up and running");
+// }).listen(process.env.PORT );
 
 
-// app.listen(process.env.PORT || 3000, function() {
-// console.log("Server is up and running");
-// });
+app.listen(process.env.PORT || 3000, function() {
+console.log("Server is up and running");
+});
 
 app.get("/",function(req,res){
   res.sendFile(__dirname+"/signup.html");
